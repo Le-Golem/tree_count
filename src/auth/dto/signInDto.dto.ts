@@ -6,7 +6,7 @@ export class SignInDto  {
     
     @ApiProperty()
     @IsString()
-    username  : string;
+    username  : string; 
 
     @ApiProperty()
     @IsString()
