@@ -2,27 +2,31 @@ import { TimestampEntity } from "src/common/generics/timestamp.entities";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 
-@Entity('user')
+@Entity('users')
 export class UserEntity extends TimestampEntity {
     @PrimaryGeneratedColumn()
-    userId: number;
+    userId: number ;
     
     @Column()
-    nom : string;
+    username : string 
 
     @Column()
-    prenom : string;
+    password : string;
 
     @Column()
-    username : string
+    enabled : number;
 
     @Column()
-    motdepasse : string;
-
-    @Column('integer', { array: true })
-    follower: number[];
+    authority : string;
 
     @Column()
-    isactive : boolean;
+    email : string;
 
+    @Column()
+    boolmdp : boolean;
+
+    @Column()
+    photo : string 
+
+    // ajoute le lien vers Evenement
 }

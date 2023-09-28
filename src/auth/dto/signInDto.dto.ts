@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsOptional, IsString } from "class-validator";
+import { IsString } from "class-validator";
 
 
 export class SignInDto  {
@@ -10,7 +10,5 @@ export class SignInDto  {
 
     @ApiProperty()
     @IsString()
-    motdepasse  : string;
-
-   
+    password  : string;
 }

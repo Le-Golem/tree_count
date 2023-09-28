@@ -5,8 +5,8 @@ import { UserService } from "./user.service";
 import { UserEntity } from "./entity/user.entity";
 import { addUserDto } from "./dto/addUser.dto";
 
-@ApiTags('user')
-@Controller('user')
+@ApiTags('users')
+@Controller('users')
 export class UserController {
     constructor(
         private readonly userService: UserService,

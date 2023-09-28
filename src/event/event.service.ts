@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from 'typeorm';
 import { EventEntity } from "./entity/event.entity";
@@ -11,8 +11,8 @@ export class EventService {
         @InjectRepository(EventEntity)
         private readonly eventRepository: Repository<EventEntity>,
 
-    ) {
-    }
+    ) 
+    {}
    
     async find() {
         return await this.eventRepository.find()

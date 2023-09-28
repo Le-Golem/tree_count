@@ -19,7 +19,7 @@ export class EventController {
             return await this.eventService.create(event)
     }
     
-    @Get('/')
+    @Get()
     async get(){
         return await this.eventService.find()
     }

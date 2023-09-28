@@ -11,13 +11,14 @@ export class EventEntity extends TimestampEntity {
     @Column()
     Label : string;
 
+    @Column()
+    description : string;
+
+
     @OneToMany(
         () => UserEntity, (user) => user.userId
     )
     users : number[]
-
-    @Column()
-    solde : number
 
     @Column({ nullable: true })
     isActive : boolean

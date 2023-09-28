@@ -1,7 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsArray, IsBoolean, IsNumber, IsOptional, IsString } from "class-validator";
 
-
 export class addEventDto  {
     
     @ApiProperty()
@@ -9,16 +8,16 @@ export class addEventDto  {
     Label  : string;
 
     @ApiProperty()
-    @IsNumber()
-    solde  : number;
+    @IsString()
+    description  : string;
 
     @ApiProperty({ type: [Number], isArray: true, required: false })
     @IsArray()
     @IsOptional()
     users: number[] | null;
 
-    @ApiProperty({ description: 'Is active status' })
+    @ApiProperty({ description: 'Is active status', default: true })
     @IsBoolean()
-    isActive: boolean ;
+    isActive: boolean;
 
 }

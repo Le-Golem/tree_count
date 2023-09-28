@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsArray, IsBoolean, IsOptional, IsString } from "class-validator";
+import { IsBoolean, IsNumber, IsOptional, IsString } from "class-validator";
 
 
 export class addUserDto  {
@@ -7,30 +7,34 @@ export class addUserDto  {
     @ApiProperty()
     @IsString()
     @IsOptional()
-    nom  : string;
+    username  : string;
 
     @ApiProperty()
     @IsString()
     @IsOptional()
-    prenom  : string;
+    password  : string;
 
     @ApiProperty()
     @IsString()
     @IsOptional()
-    username : string;
-
+    email  : string;
 
     @ApiProperty()
     @IsString()
     @IsOptional()
-    motdepasse  : string;
-
-    @ApiProperty({ type: [Number], isArray: true, required: false })
-    @IsArray()
-    @IsOptional()
-    follower: number[] | null;
+    authority  : string;
 
     @ApiProperty()
     @IsBoolean()
-    isactive : boolean
+    boolmdp : boolean
+
+    @ApiProperty()
+    @IsString()
+    @IsOptional()
+    photo  : string;
+
+    @ApiProperty()
+    @IsNumber()
+    @IsOptional()
+    enabled  : number;
 }
