@@ -1,5 +1,7 @@
 import { TimestampEntity } from "src/common/generics/timestamp.entities";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { EventEntity } from "src/event/entity/event.entity";
+import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { ParticipateEntity } from "./participate.entity";
 
 
 @Entity('users')
@@ -26,7 +28,10 @@ export class UserEntity extends TimestampEntity {
     boolmdp : boolean;
 
     @Column()
-    photo : string 
+    photo : string ;
 
-    // ajoute le lien vers Evenement
+    @OneToMany(() => ParticipateEntity , (event) => event.user)
+    @JoinColumn({name : "userEvent"})
+    events : ParticipateEntity[] ; 
 }
+

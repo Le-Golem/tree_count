@@ -1,6 +1,6 @@
 import { TimestampEntity } from "src/common/generics/timestamp.entities";
-import { UserEntity } from "src/user/entity/user.entity";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { ParticipateEntity } from "src/user/entity/participate.entity";
+import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity('event')
@@ -14,13 +14,10 @@ export class EventEntity extends TimestampEntity {
     @Column()
     description : string;
 
-
-    @OneToMany(
-        () => UserEntity, (user) => user.userId
-    )
-    users : number[]
-
     @Column({ nullable: true })
     isActive : boolean
 
+    @OneToMany(() => ParticipateEntity , (user) => user.event)
+    @JoinColumn({name:"eventUser"})
+    users : ParticipateEntity[]
 }
