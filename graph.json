@@ -14,7 +14,7 @@
         "transient": false,
         "exported": false,
         "token": "JwtModule",
-        "initTime": 32.79209999926388
+        "initTime": 38.778699999675155
       }
     },
     "203550704": {
@@ -47,7 +47,7 @@
         "transient": false,
         "exported": false,
         "token": "InternalCoreModule",
-        "initTime": 34.36050000041723
+        "initTime": 41.29990000091493
       }
     },
     "233936880": {
@@ -63,7 +63,7 @@
         "transient": false,
         "exported": false,
         "token": "AppController",
-        "initTime": 0.9309999998658895
+        "initTime": 1.1331999991089106
       }
     },
     "266839889": {
@@ -79,7 +79,7 @@
         "transient": false,
         "exported": true,
         "token": "EntityManager",
-        "initTime": 129.41990000009537
+        "initTime": 252.57080000080168
       }
     },
     "545846241": {
@@ -135,7 +135,7 @@
         "transient": false,
         "exported": true,
         "token": "Reflector",
-        "initTime": 34.20120000094175
+        "initTime": 40.950100000947714
       }
     },
     "687352615": {
@@ -200,7 +200,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmCoreModule",
-        "initTime": 33.90430000051856
+        "initTime": 40.393800001591444
       }
     },
     "892422081": {
@@ -216,7 +216,7 @@
         "transient": false,
         "exported": true,
         "token": "TransactionsService",
-        "initTime": 130.01890000142157
+        "initTime": 252.72329999879003
       }
     },
     "1029560562": {
@@ -232,7 +232,7 @@
         "transient": false,
         "exported": false,
         "token": "TransactionsController",
-        "initTime": 0.3674999997019768
+        "initTime": 0.3570000007748604
       }
     },
     "1051058129": {
@@ -249,7 +249,7 @@
         "exported": false,
         "token": "AuthGuard",
         "subtype": "guard",
-        "initTime": 0.7713000010699034
+        "initTime": 0.5980999991297722
       }
     },
     "1070370213": {
@@ -265,7 +265,7 @@
         "transient": false,
         "exported": true,
         "token": "JwtService",
-        "initTime": 33.151200000196695
+        "initTime": 39.36229999922216
       }
     },
     "1139971038": {
@@ -307,7 +307,7 @@
         "transient": false,
         "exported": true,
         "token": "EventEntityRepository",
-        "initTime": 128.84579999931157
+        "initTime": 251.7722000014037
       }
     },
     "1205385508": {
@@ -323,7 +323,7 @@
         "transient": false,
         "exported": true,
         "token": "UserEntityRepository",
-        "initTime": 129.2829999998212
+        "initTime": 252.26029999926686
       }
     },
     "1371533376": {
@@ -340,7 +340,7 @@
         "transient": false,
         "exported": false,
         "token": "EventModule",
-        "initTime": 32.76090000011027
+        "initTime": 38.74420000053942
       }
     },
     "1382700593": {
@@ -356,7 +356,7 @@
         "transient": false,
         "exported": true,
         "token": "ParticipateEntityRepository",
-        "initTime": 129.07239999994636
+        "initTime": 252.0184000004083
       }
     },
     "1404752088": {
@@ -372,7 +372,7 @@
         "transient": false,
         "exported": false,
         "token": "AuthController",
-        "initTime": 0.40049999952316284,
+        "initTime": 0.19669999927282333,
         "enhancers": [
           {
             "id": "1051058129",
@@ -396,7 +396,7 @@
         "transient": false,
         "exported": true,
         "token": "Reflector",
-        "initTime": 35.4491000007838
+        "initTime": 42.62150000035763
       }
     },
     "1475573941": {
@@ -429,7 +429,7 @@
         "transient": false,
         "exported": true,
         "token": "Connection",
-        "initTime": 129.38130000047386
+        "initTime": 252.4938999991864
       }
     },
     "1542581243": {
@@ -462,7 +462,7 @@
         "exported": false,
         "token": "ParseIntPipe",
         "subtype": "pipe",
-        "initTime": 0.6140999998897314
+        "initTime": 0.6016000006347895
       }
     },
     "1690524226": {
@@ -479,7 +479,7 @@
         "transient": false,
         "exported": false,
         "token": "TransactionsModule",
-        "initTime": 32.60059999860823
+        "initTime": 38.58390000090003
       }
     },
     "1712941473": {
@@ -511,7 +511,7 @@
         "transient": false,
         "exported": true,
         "token": "EventService",
-        "initTime": 130.19210000149906
+        "initTime": 252.90230000019073
       }
     },
     "1817334964": {
@@ -544,7 +544,7 @@
         "transient": false,
         "exported": true,
         "token": "REQUEST",
-        "initTime": 29.324599999934435
+        "initTime": 35.53260000050068
       }
     },
     "2075644217": {
@@ -609,7 +609,7 @@
         "transient": true,
         "exported": true,
         "token": "INQUIRER",
-        "initTime": 29.318900000303984
+        "initTime": 35.51869999989867
       }
     },
     "-26938366": {
@@ -657,7 +657,7 @@
         "transient": false,
         "exported": true,
         "token": "LazyModuleLoader",
-        "initTime": 33.70710000023246
+        "initTime": 40.079600000754
       }
     },
     "-1904419534": {
@@ -700,7 +700,7 @@
         "transient": false,
         "exported": false,
         "token": "AppModule",
-        "initTime": 33.700699999928474
+        "initTime": 40.06410000100732
       }
     },
     "-71302842": {
@@ -748,7 +748,7 @@
         "transient": false,
         "exported": false,
         "token": "AppService",
-        "initTime": 33.677600000053644
+        "initTime": 40.023700000718236
       }
     },
     "-2135742481": {
@@ -775,7 +775,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmModule",
-        "initTime": 33.66380000114441
+        "initTime": 39.996399998664856
       }
     },
     "-1068388246": {
@@ -833,7 +833,7 @@
         "transient": false,
         "exported": true,
         "token": "DataSource",
-        "initTime": 129.22190000116825
+        "initTime": 252.3481999989599
       }
     },
     "-1537098012": {
@@ -860,7 +860,7 @@
         "transient": false,
         "exported": false,
         "token": "UserModule",
-        "initTime": 33.37170000001788
+        "initTime": 39.5077999997884
       }
     },
     "-523403191": {
@@ -892,7 +892,7 @@
         "transient": false,
         "exported": true,
         "token": "UserService",
-        "initTime": 130.82880000025034
+        "initTime": 253.70549999922514
       }
     },
     "-207939746": {
@@ -908,7 +908,7 @@
         "transient": false,
         "exported": false,
         "token": "UserController",
-        "initTime": 0.47809999994933605
+        "initTime": 0.4602000005543232
       }
     },
     "-257450702": {
@@ -925,7 +925,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmModule",
-        "initTime": 32.9582000002265
+        "initTime": 38.948499999940395
       }
     },
     "-223917668": {
@@ -968,7 +968,7 @@
         "transient": false,
         "exported": false,
         "token": "AuthModule",
-        "initTime": 32.90410000085831
+        "initTime": 38.89589999988675
       }
     },
     "-120792986": {
@@ -1000,7 +1000,7 @@
         "transient": false,
         "exported": true,
         "token": "AuthService",
-        "initTime": 131.00080000050366
+        "initTime": 253.71419999934733
       }
     },
     "-536515674": {
@@ -1100,7 +1100,7 @@
         "transient": false,
         "exported": false,
         "token": "EventController",
-        "initTime": 0.3139999993145466,
+        "initTime": 0.23240000009536743,
         "enhancers": [
           {
             "id": "1561920284",
@@ -1124,7 +1124,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmModule",
-        "initTime": 32.69890000112355
+        "initTime": 38.68400000035763
       }
     },
     "-223917667": {
@@ -1189,7 +1189,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmModule",
-        "initTime": 32.535199999809265
+        "initTime": 38.518099999055266
       }
     },
     "-223917666": {
@@ -1221,7 +1221,7 @@
         "transient": false,
         "exported": true,
         "token": "TransactionsEntityRepository",
-        "initTime": 128.6697000004351
+        "initTime": 251.58750000037253
       }
     }
   },

@@ -5,7 +5,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 @Entity('transactions')
 export class TransactionsEntity extends TimestampEntity { 
     @PrimaryGeneratedColumn()
-    transactionsId: number;
+    transactionId: number;
 
     @Column()
     label : string 

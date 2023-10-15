@@ -5,11 +5,11 @@ export class addTransactionsDto {
 
     @ApiProperty()
     @IsString()
-    Label : string ;
+    label : string ;
 
     @ApiProperty()
     @IsNumber()
-    solde : number;
+    amount : string;
 
     @ApiProperty()
     @IsNumber()
