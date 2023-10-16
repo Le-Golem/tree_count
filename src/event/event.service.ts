@@ -22,11 +22,10 @@ export class EventService {
         return await this.eventRepository.insert(event)  
     }
 
-    async findEventByUserId(id: number): Promise<EventEntity> {
-        const event = await this.eventRepository.createQueryBuilder('event')
-            .leftJoinAndSelect('event.user', 'user')
-            .where('user.id = :id', { id })
-            .getOne();
-        return event;
+    async getEventsByUserId(userId: number): Promise<EventEntity[]> {
+        return await this.eventRepository.createQueryBuilder('event')
+            .leftJoinAndSelect('event.users', 'user')
+            .where('user.userId = :userId', { userId })
+            .getMany();
     }
 }

@@ -24,11 +24,9 @@ export class EventController {
         return await this.eventService.find()
     }
 
-    @Get(":userId")
-    async getByUserId(
-        @Param('userId' , ParseIntPipe) userId : number
-    ) : Promise<EventEntity >{
-        return await this.eventService.findEventByUserId(userId)
+    @Get('user/:userId')
+    async getEventsByUserId(@Param('userId') userId: number): Promise<EventEntity[]> {
+        return this.eventService.getEventsByUserId(userId);
     }
 
 }

@@ -20,4 +20,8 @@ export class TransactionsService {
         return await this.transactionRepository.insert(transactions)
     }
 
+    async getTransactionByUserId(userId: number): Promise<TransactionsEntity> {
+        return await this.transactionRepository.findOne({ where: { userId } });
+    }
+
 }

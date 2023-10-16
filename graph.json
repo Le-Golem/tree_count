@@ -14,7 +14,7 @@
         "transient": false,
         "exported": false,
         "token": "JwtModule",
-        "initTime": 38.778699999675155
+        "initTime": 33.77560000028461
       }
     },
     "203550704": {
@@ -47,7 +47,7 @@
         "transient": false,
         "exported": false,
         "token": "InternalCoreModule",
-        "initTime": 41.29990000091493
+        "initTime": 35.30920000001788
       }
     },
     "233936880": {
@@ -63,7 +63,7 @@
         "transient": false,
         "exported": false,
         "token": "AppController",
-        "initTime": 1.1331999991089106
+        "initTime": 1.4126000003889203
       }
     },
     "266839889": {
@@ -79,7 +79,7 @@
         "transient": false,
         "exported": true,
         "token": "EntityManager",
-        "initTime": 252.57080000080168
+        "initTime": 133.05709999985993
       }
     },
     "545846241": {
@@ -135,7 +135,7 @@
         "transient": false,
         "exported": true,
         "token": "Reflector",
-        "initTime": 40.950100000947714
+        "initTime": 35.15579999983311
       }
     },
     "687352615": {
@@ -200,7 +200,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmCoreModule",
-        "initTime": 40.393800001591444
+        "initTime": 35.13329999987036
       }
     },
     "892422081": {
@@ -216,7 +216,7 @@
         "transient": false,
         "exported": true,
         "token": "TransactionsService",
-        "initTime": 252.72329999879003
+        "initTime": 133.47330000065267
       }
     },
     "1029560562": {
@@ -232,7 +232,7 @@
         "transient": false,
         "exported": false,
         "token": "TransactionsController",
-        "initTime": 0.3570000007748604
+        "initTime": 0.14080000016838312
       }
     },
     "1051058129": {
@@ -249,7 +249,7 @@
         "exported": false,
         "token": "AuthGuard",
         "subtype": "guard",
-        "initTime": 0.5980999991297722
+        "initTime": 0.7449999991804361
       }
     },
     "1070370213": {
@@ -265,7 +265,7 @@
         "transient": false,
         "exported": true,
         "token": "JwtService",
-        "initTime": 39.36229999922216
+        "initTime": 34.40780000016093
       }
     },
     "1139971038": {
@@ -307,7 +307,7 @@
         "transient": false,
         "exported": true,
         "token": "EventEntityRepository",
-        "initTime": 251.7722000014037
+        "initTime": 132.51150000002235
       }
     },
     "1205385508": {
@@ -323,7 +323,7 @@
         "transient": false,
         "exported": true,
         "token": "UserEntityRepository",
-        "initTime": 252.26029999926686
+        "initTime": 132.92479999922216
       }
     },
     "1371533376": {
@@ -340,7 +340,7 @@
         "transient": false,
         "exported": false,
         "token": "EventModule",
-        "initTime": 38.74420000053942
+        "initTime": 33.747299999929965
       }
     },
     "1382700593": {
@@ -356,7 +356,7 @@
         "transient": false,
         "exported": true,
         "token": "ParticipateEntityRepository",
-        "initTime": 252.0184000004083
+        "initTime": 132.73369999974966
       }
     },
     "1404752088": {
@@ -372,7 +372,7 @@
         "transient": false,
         "exported": false,
         "token": "AuthController",
-        "initTime": 0.19669999927282333,
+        "initTime": 0.07329999934881926,
         "enhancers": [
           {
             "id": "1051058129",
@@ -396,7 +396,7 @@
         "transient": false,
         "exported": true,
         "token": "Reflector",
-        "initTime": 42.62150000035763
+        "initTime": 37.05929999984801
       }
     },
     "1475573941": {
@@ -429,7 +429,7 @@
         "transient": false,
         "exported": true,
         "token": "Connection",
-        "initTime": 252.4938999991864
+        "initTime": 133.01829999964684
       }
     },
     "1542581243": {
@@ -448,23 +448,6 @@
         "token": "ModuleRef"
       }
     },
-    "1561920284": {
-      "id": "1561920284",
-      "label": "ParseIntPipe",
-      "parent": "-1400619399",
-      "metadata": {
-        "type": "injectable",
-        "internal": false,
-        "sourceModuleName": "EventModule",
-        "durable": false,
-        "static": true,
-        "transient": false,
-        "exported": false,
-        "token": "ParseIntPipe",
-        "subtype": "pipe",
-        "initTime": 0.6016000006347895
-      }
-    },
     "1690524226": {
       "id": "1690524226",
       "label": "TransactionsModule",
@@ -479,7 +462,7 @@
         "transient": false,
         "exported": false,
         "token": "TransactionsModule",
-        "initTime": 38.58390000090003
+        "initTime": 33.59900000039488
       }
     },
     "1712941473": {
@@ -511,7 +494,7 @@
         "transient": false,
         "exported": true,
         "token": "EventService",
-        "initTime": 252.90230000019073
+        "initTime": 133.63940000068396
       }
     },
     "1817334964": {
@@ -544,7 +527,7 @@
         "transient": false,
         "exported": true,
         "token": "REQUEST",
-        "initTime": 35.53260000050068
+        "initTime": 29.722100000828505
       }
     },
     "2075644217": {
@@ -609,7 +592,7 @@
         "transient": true,
         "exported": true,
         "token": "INQUIRER",
-        "initTime": 35.51869999989867
+        "initTime": 29.735299999825656
       }
     },
     "-26938366": {
@@ -657,7 +640,7 @@
         "transient": false,
         "exported": true,
         "token": "LazyModuleLoader",
-        "initTime": 40.079600000754
+        "initTime": 34.65579999983311
       }
     },
     "-1904419534": {
@@ -700,7 +683,7 @@
         "transient": false,
         "exported": false,
         "token": "AppModule",
-        "initTime": 40.06410000100732
+        "initTime": 34.64890000037849
       }
     },
     "-71302842": {
@@ -748,7 +731,7 @@
         "transient": false,
         "exported": false,
         "token": "AppService",
-        "initTime": 40.023700000718236
+        "initTime": 34.62980000022799
       }
     },
     "-2135742481": {
@@ -775,7 +758,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmModule",
-        "initTime": 39.996399998664856
+        "initTime": 34.616899999789894
       }
     },
     "-1068388246": {
@@ -833,7 +816,7 @@
         "transient": false,
         "exported": true,
         "token": "DataSource",
-        "initTime": 252.3481999989599
+        "initTime": 132.85580000001937
       }
     },
     "-1537098012": {
@@ -860,7 +843,7 @@
         "transient": false,
         "exported": false,
         "token": "UserModule",
-        "initTime": 39.5077999997884
+        "initTime": 34.32519999984652
       }
     },
     "-523403191": {
@@ -892,7 +875,7 @@
         "transient": false,
         "exported": true,
         "token": "UserService",
-        "initTime": 253.70549999922514
+        "initTime": 134.25659999996424
       }
     },
     "-207939746": {
@@ -908,7 +891,7 @@
         "transient": false,
         "exported": false,
         "token": "UserController",
-        "initTime": 0.4602000005543232
+        "initTime": 0.2789000002667308
       }
     },
     "-257450702": {
@@ -925,7 +908,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmModule",
-        "initTime": 38.948499999940395
+        "initTime": 33.932499999180436
       }
     },
     "-223917668": {
@@ -968,7 +951,7 @@
         "transient": false,
         "exported": false,
         "token": "AuthModule",
-        "initTime": 38.89589999988675
+        "initTime": 33.88729999959469
       }
     },
     "-120792986": {
@@ -1000,7 +983,7 @@
         "transient": false,
         "exported": true,
         "token": "AuthService",
-        "initTime": 253.71419999934733
+        "initTime": 134.11559999920428
       }
     },
     "-536515674": {
@@ -1100,14 +1083,7 @@
         "transient": false,
         "exported": false,
         "token": "EventController",
-        "initTime": 0.23240000009536743,
-        "enhancers": [
-          {
-            "id": "1561920284",
-            "methodKey": "getByUserId",
-            "subtype": "pipe"
-          }
-        ]
+        "initTime": 0.2436000006273389
       }
     },
     "-257450701": {
@@ -1124,7 +1100,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmModule",
-        "initTime": 38.68400000035763
+        "initTime": 33.6933000003919
       }
     },
     "-223917667": {
@@ -1189,7 +1165,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmModule",
-        "initTime": 38.518099999055266
+        "initTime": 33.53459999989718
       }
     },
     "-223917666": {
@@ -1221,7 +1197,7 @@
         "transient": false,
         "exported": true,
         "token": "TransactionsEntityRepository",
-        "initTime": 251.58750000037253
+        "initTime": 132.33600000012666
       }
     }
   },
@@ -1978,21 +1954,6 @@
         "injectionType": "decorator"
       },
       "id": "-796430476"
-    },
-    "-602037767": {
-      "source": "-1359523312",
-      "target": "1561920284",
-      "metadata": {
-        "type": "class-to-class",
-        "sourceModuleName": "EventModule",
-        "sourceClassName": "EventController",
-        "targetClassName": "ParseIntPipe",
-        "sourceClassToken": "EventController",
-        "targetClassToken": "ParseIntPipe",
-        "targetModuleName": "EventModule",
-        "injectionType": "decorator"
-      },
-      "id": "-602037767"
     }
   },
   "entrypoints": {
@@ -2020,6 +1981,18 @@
           "requestMethod": "POST"
         },
         "id": "1029560562_create"
+      },
+      {
+        "type": "http-endpoint",
+        "methodName": "getTransactionByUserId",
+        "className": "TransactionsController",
+        "classNodeId": "1029560562",
+        "metadata": {
+          "key": "/transactions/:userId",
+          "path": "/transactions/:userId",
+          "requestMethod": "GET"
+        },
+        "id": "1029560562_getTransactionByUserId"
       }
     ],
     "1404752088": [
@@ -2084,6 +2057,18 @@
           "requestMethod": "GET"
         },
         "id": "-207939746_find"
+      },
+      {
+        "type": "http-endpoint",
+        "methodName": "getUserById",
+        "className": "UserController",
+        "classNodeId": "-207939746",
+        "metadata": {
+          "key": "/users/:userId",
+          "path": "/users/:userId",
+          "requestMethod": "GET"
+        },
+        "id": "-207939746_getUserById"
       }
     ],
     "-1359523312": [
@@ -2113,15 +2098,15 @@
       },
       {
         "type": "http-endpoint",
-        "methodName": "getByUserId",
+        "methodName": "getEventsByUserId",
         "className": "EventController",
         "classNodeId": "-1359523312",
         "metadata": {
-          "key": "/event/:userId",
-          "path": "/event/:userId",
+          "key": "/event/user/:userId",
+          "path": "/event/user/:userId",
           "requestMethod": "GET"
         },
-        "id": "-1359523312_getByUserId"
+        "id": "-1359523312_getEventsByUserId"
       }
     ]
   },

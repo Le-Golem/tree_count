@@ -32,4 +32,10 @@ export class UserController {
                 return await this.userService.findOne(username)
             } 
     }
+
+    @Get(':userId')
+    async getUserById(
+        @Param('userId') userId: number): Promise<UserEntity> {
+        return this.userService.getUserById(userId);
+    }
 }
