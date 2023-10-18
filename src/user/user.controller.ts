@@ -36,6 +36,12 @@ export class UserController {
     @Get(':userId')
     async getUserById(
         @Param('userId') userId: number): Promise<UserEntity> {
-        return this.userService.getUserById(userId);
+        return await this.userService.getUserById(userId);
     }
+
+    @Get(':userId/events')
+    async getEventsByUserId(
+        @Param('userId') userId : number) : Promise<UserEntity> {
+            return await this.userService.getEvents(userId)
+        }
 }

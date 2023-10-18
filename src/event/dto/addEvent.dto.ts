@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsArray, IsBoolean, IsNumber, IsOptional, IsString } from "class-validator";
-import { ParticipateEntity } from "src/user/entity/participate.entity";
+import { UserEntity } from "src/user/entity/user.entity";
 
 export class addEventDto  {
     
@@ -12,10 +12,10 @@ export class addEventDto  {
     @IsString()
     description  : string;
 
-    @ApiProperty({ type: [Number], isArray: true, required: false })
+    @ApiProperty({isArray: true, required: false })
     @IsArray()
     @IsOptional()
-    users: ParticipateEntity[] | null;
+    usersToParticipate: number[];
 
     @ApiProperty({ description: 'Is active status', default: true })
     @IsBoolean()

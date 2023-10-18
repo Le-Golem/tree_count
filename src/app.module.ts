@@ -22,7 +22,7 @@ import { TransactionsModule } from './transactions/transactions.module';
     UserModule,
     AuthModule,
     EventModule,
-    TransactionsModule
+    TransactionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

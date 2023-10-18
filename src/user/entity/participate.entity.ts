@@ -16,4 +16,10 @@ export class ParticipateEntity{
     @ManyToOne(() => EventEntity , (event) => event.users)
     @JoinColumn({name:"event"})
     event : EventEntity
+
+    constructor(event: EventEntity, user: UserEntity) {
+        this.user = user
+        this.event = event
+    }
 }
+

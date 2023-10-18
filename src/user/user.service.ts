@@ -29,4 +29,12 @@ export class UserService {
         return await this.userRepository.findOne({where : {userId : userId}});
     }
 
+    async getEvents(userId : number) : Promise<UserEntity> {
+        return this.userRepository
+        .createQueryBuilder('user')
+        .leftJoinAndSelect('user.events' , 'participate')
+        .leftJoinAndSelect('participate.event' , 'event')
+        .where('user.userId = :userId' , {userId})
+        .getOne()
+    }
 }

@@ -17,7 +17,10 @@ export class EventEntity extends TimestampEntity {
     @Column({ nullable: true })
     isActive : boolean
 
-    @OneToMany(() => ParticipateEntity , (user) => user.event)
-    @JoinColumn({name:"eventUser"})
-    users : ParticipateEntity[]
+    @OneToMany(() => ParticipateEntity, (user) => user.event, {
+        nullable: true, 
+    })
+    @JoinColumn({ name: "eventUser" })
+    users: ParticipateEntity[];
+    
 }

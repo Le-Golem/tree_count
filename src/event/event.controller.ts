@@ -5,8 +5,8 @@ import { EventService } from "./event.service";
 import { addEventDto } from "./dto/addEvent.dto";
 import { EventEntity } from "./entity/event.entity";
 
-@ApiTags('event')
-@Controller('event')
+@ApiTags('events')
+@Controller('events')
 export class EventController {
     constructor(
         private readonly eventService: EventService,
@@ -19,14 +19,16 @@ export class EventController {
             return await this.eventService.create(event)
     }
     
-    @Get()
-    async get(){
-        return await this.eventService.find()
+    @Get('userId/:userId')
+    async findEventByUser(
+        @Param('userId', ParseIntPipe) userId: number
+    ){
+        return await this.eventService.findEventByUser(userId)
     }
 
-    @Get('user/:userId')
-    async getEventsByUserId(@Param('userId') userId: number): Promise<EventEntity[]> {
-        return this.eventService.getEventsByUserId(userId);
-    }
+    // @Get('user/:userId')
+    // async getEventsByUserId(@Param('userId') userId: number): Promise<EventEntity[]> {
+    // return this.eventService.getEventsByUserId(event,userId);
+    // }
 
 }
