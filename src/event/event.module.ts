@@ -6,11 +6,10 @@ import { EventService } from './event.service';
 import { UserEntity } from 'src/user/entity/user.entity';
 import { ParticipateEntity } from 'src/user/entity/participate.entity';
 
-
 @Module({
-  imports: [ 
-    TypeOrmModule.forFeature([EventEntity , ParticipateEntity , UserEntity])
-],
+  imports: [
+    TypeOrmModule.forFeature([EventEntity, ParticipateEntity, UserEntity]),
+  ],
   controllers: [EventController],
   providers: [EventService],
   exports: [EventService],

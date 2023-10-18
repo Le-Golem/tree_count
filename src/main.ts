@@ -1,7 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import "reflect-metadata";
-import { DocumentBuilder, SwaggerDocumentOptions, SwaggerModule } from '@nestjs/swagger';
+import 'reflect-metadata';
+import {
+  DocumentBuilder,
+  SwaggerDocumentOptions,
+  SwaggerModule,
+} from '@nestjs/swagger';
 import { writeFileSync } from 'fs';
 import { SerializedGraph } from '@nestjs/core/inspector/serialized-graph';
 import { NestExpressApplication } from '@nestjs/platform-express';
@@ -14,21 +18,27 @@ async function bootstrap() {
   });
 
   app.use(morgan('dev'));
-  
+
   /* CORS */
 
   const allowedOrigins = process.env.ALLOWED_ORIGINS
-    ? process.env.ALLOWED_ORIGINS.split(" ")
-    : []
+    ? process.env.ALLOWED_ORIGINS.split(' ')
+    : [];
 
-
-  const corsOptions =  {
-    origin : (origin: string, callback: (err: Error, value?: string) => void) => {
-      origin = origin?.split(",")[0]
-      if (!origin || allowedOrigins.length === 0 || allowedOrigins.findIndex(o => o === origin) > -1) {
-        return callback(null, origin)
+  const corsOptions = {
+    origin: (
+      origin: string,
+      callback: (err: Error, value?: string) => void,
+    ) => {
+      origin = origin?.split(',')[0];
+      if (
+        !origin ||
+        allowedOrigins.length === 0 ||
+        allowedOrigins.findIndex((o) => o === origin) > -1
+      ) {
+        return callback(null, origin);
       }
-      return callback(new Error(`origin ${origin} is not allowed`))
+      return callback(new Error(`origin ${origin} is not allowed`));
     },
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
@@ -41,10 +51,12 @@ async function bootstrap() {
 
   /* Global pipe */
 
-  app.useGlobalPipes(new ValidationPipe({
-    transform: true,
-    forbidNonWhitelisted: true,
-  }));
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      forbidNonWhitelisted: true,
+    }),
+  );
 
   /* Swagger API - Generate API documentation */
   const config = new DocumentBuilder()
@@ -54,17 +66,14 @@ async function bootstrap() {
     .build();
 
   const options: SwaggerDocumentOptions = {
-    operationIdFactory: (
-      controllerKey: string,
-      methodKey: string
-    ) => methodKey,
+    operationIdFactory: (controllerKey: string, methodKey: string) => methodKey,
   };
   const document = SwaggerModule.createDocument(app, config, options);
   SwaggerModule.setup('', app, document);
 
   /*******************************************/
 
-  await app.listen(3001);
+  await app.listen(3000);
   writeFileSync('./graph.json', app.get(SerializedGraph).toString()); // test
 }
 bootstrap();

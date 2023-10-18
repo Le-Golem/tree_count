@@ -1,26 +1,30 @@
-import { TimestampEntity } from "src/common/generics/timestamp.entities";
-import { ParticipateEntity } from "src/user/entity/participate.entity";
-import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-
+import { TimestampEntity } from 'src/common/generics/timestamp.entities';
+import { ParticipateEntity } from 'src/user/entity/participate.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('event')
 export class EventEntity extends TimestampEntity {
-    @PrimaryGeneratedColumn()
-    eventId: number;
-    
-    @Column()
-    Label : string;
+  @PrimaryGeneratedColumn()
+  eventId: number;
 
-    @Column()
-    description : string;
+  @Column()
+  label: string;
 
-    @Column({ nullable: true })
-    isActive : boolean
+  @Column()
+  description: string;
 
-    @OneToMany(() => ParticipateEntity, (user) => user.event, {
-        nullable: true, 
-    })
-    @JoinColumn({ name: "eventUser" })
-    users: ParticipateEntity[];
-    
+  @Column({ default: true })
+  isActive: boolean;
+
+  @OneToMany(() => ParticipateEntity, (user) => user.event, {
+    nullable: true,
+  })
+  @JoinColumn({ name: 'eventUser' })
+  users: ParticipateEntity[];
 }

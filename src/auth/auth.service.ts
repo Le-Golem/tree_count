@@ -6,11 +6,11 @@ import { UserService } from 'src/user/user.service';
 export class AuthService {
   constructor(
     private userService: UserService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
   ) {}
 
-  async signIn(username , pass) {
-    const user = await this.userService.findOne(username);
+  async signIn(username, pass) {
+    const user = await this.userService.findByUsername(username);
     if (user?.password !== pass) {
       throw new UnauthorizedException();
     }

@@ -1,19 +1,24 @@
-import { BaseEntity, CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from "typeorm";
+import {
+  BaseEntity,
+  CreateDateColumn,
+  DeleteDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 export class TimestampEntity extends BaseEntity {
   @CreateDateColumn({
     update: false,
-    select: false
+    select: false,
   })
   createdAt: Date;
 
   @UpdateDateColumn({
-    select: false
+    select: false,
   })
   updatedAt: Date;
 
   @DeleteDateColumn({
-    select: false
+    select: false,
   })
   deletedAt: Date;
 }
