@@ -25,7 +25,7 @@ export class UserService {
   async findById(userId: number): Promise<UserEntity> {
     return await this.userRepository.findOne({
       where: { userId: userId },
-      relations: ['events', 'events.event'],
+      relations: ['participate', 'participate.event'],
     });
   }
 

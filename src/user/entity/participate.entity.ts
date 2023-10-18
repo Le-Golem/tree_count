@@ -7,12 +7,12 @@ export class ParticipateEntity {
   @PrimaryGeneratedColumn()
   participateId: number;
 
-  @ManyToOne(() => UserEntity, (user) => user.events)
-  @JoinColumn({ name: 'user' })
+  @ManyToOne(() => UserEntity, (user) => user.participate)
+  @JoinColumn({ name: 'userId' })
   user: UserEntity;
 
-  @ManyToOne(() => EventEntity, (event) => event.users)
-  @JoinColumn({ name: 'event' })
+  @ManyToOne(() => EventEntity, (event) => event.participate)
+  @JoinColumn({ name: 'eventId' })
   event: EventEntity;
 
   constructor(event: EventEntity, user: UserEntity) {

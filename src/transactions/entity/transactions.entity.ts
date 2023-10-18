@@ -1,5 +1,13 @@
 import { TimestampEntity } from 'src/common/generics/timestamp.entities';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { EventEntity } from 'src/event/entity/event.entity';
+import { UserEntity } from 'src/user/entity/user.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('transactions')
 export class TransactionsEntity extends TimestampEntity {
@@ -10,8 +18,17 @@ export class TransactionsEntity extends TimestampEntity {
   label: string;
 
   @Column()
-  amount: string;
+  amount: number;
 
-  @Column()
-  userId: number;
+  @ManyToOne(() => UserEntity, (user) => user.transactions)
+  @JoinColumn({ name: 'sender-userId' })
+  sender: UserEntity;
+
+  @ManyToOne(() => EventEntity, (event) => event.transactions)
+  @JoinColumn({ name: 'eventId' })
+  event: EventEntity;
+
+  @ManyToOne(() => UserEntity, (user) => user.transactions, { nullable: true })
+  @JoinColumn({ name: 'receiver-userId' })
+  receiver: UserEntity;
 }

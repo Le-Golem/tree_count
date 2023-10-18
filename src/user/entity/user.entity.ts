@@ -7,6 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ParticipateEntity } from './participate.entity';
+import { TransactionsEntity } from 'src/transactions/entity/transactions.entity';
 
 @Entity('users')
 export class UserEntity extends TimestampEntity {
@@ -25,6 +26,10 @@ export class UserEntity extends TimestampEntity {
   email: string;
 
   @OneToMany(() => ParticipateEntity, (event) => event.user)
-  @JoinColumn({ name: 'userEvent' })
-  events: ParticipateEntity[];
+  @JoinColumn({ name: 'participateId' })
+  participate: ParticipateEntity[];
+
+  @OneToMany(() => TransactionsEntity, (transaction) => transaction.sender)
+  @JoinColumn({ name: 'transactionId' })
+  transactions: TransactionsEntity[];
 }

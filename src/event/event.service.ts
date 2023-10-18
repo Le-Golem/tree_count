@@ -37,14 +37,14 @@ export class EventService {
 
   async find(): Promise<EventEntity[]> {
     return await this.eventRepository.find({
-      relations: ['users', 'users.user'],
+      relations: ['participate', 'participate.user'],
     });
   }
 
   async update(event: updateEventDto) {
     const eventFound = await this.eventRepository.findOne({
       where: { eventId: event.eventId },
-      relations: ['users', 'users.user'],
+      relations: ['participate', 'participate.user'],
     });
 
     if (!eventFound) {
@@ -57,7 +57,7 @@ export class EventService {
   async addUserToEvent(eventId: number, userId: number) {
     const event = await this.eventRepository.findOne({
       where: { eventId },
-      relations: ['users', 'users.user'],
+      relations: ['participate', 'participate.user'],
     });
 
     if (!event) {
@@ -68,6 +68,14 @@ export class EventService {
 
     if (!user) {
       throw new BadGatewayException('User not found');
+    }
+
+    if (
+      event.participate.find(
+        (participate) => participate.user.userId === userId,
+      )
+    ) {
+      throw new BadGatewayException('User already in event');
     }
 
     const newParticipate = new ParticipateEntity(event, user);
@@ -75,14 +83,14 @@ export class EventService {
 
     return await this.eventRepository.findOne({
       where: { eventId },
-      relations: ['users', 'users.user'],
+      relations: ['participate', 'participate.user'],
     });
   }
 
   async removeUserFromEvent(eventId: number, userId: number) {
     const event = await this.eventRepository.findOne({
       where: { eventId },
-      relations: ['users', 'users.user'],
+      relations: ['participate', 'participate.user'],
     });
 
     if (!event) {
@@ -93,6 +101,14 @@ export class EventService {
 
     if (!user) {
       throw new BadGatewayException('User not found');
+    }
+
+    if (
+      !event.participate.find(
+        (participate) => participate.user.userId === userId,
+      )
+    ) {
+      throw new BadGatewayException('User not in event');
     }
 
     await this.participateRepository.delete({
@@ -102,16 +118,43 @@ export class EventService {
 
     return await this.eventRepository.findOne({
       where: { eventId },
-      relations: ['users', 'users.user'],
+      relations: ['participate', 'participate.user'],
     });
   }
 
-  // async findEventByUser(userId: number): Promise<EventEntity[]> {
-  //   return this.eventRepository
-  //     .createQueryBuilder('event')
-  //     .leftJoinAndSelect('event.users', 'participate')
-  //     .leftJoinAndSelect('participate.user', 'user')
-  //     .where('user.userId = :userId', { userId })
-  //     .getMany();
-  // }
+  async delete(eventId: number) {
+    const event = await this.eventRepository.findOne({
+      where: { eventId },
+      relations: ['participate', 'participate.user'],
+    });
+
+    if (!event) {
+      throw new BadGatewayException('Event not found');
+    }
+
+    for (const participate of event.participate) {
+      await this.participateRepository.delete(participate.participateId);
+    }
+
+    await this.eventRepository.delete({ eventId });
+  }
+
+  async getEventById(eventId: number) {
+    const event = await this.eventRepository.findOne({
+      where: { eventId },
+      relations: [
+        'participate',
+        'participate.user',
+        'transactions',
+        'transactions.sender',
+        'transactions.receiver',
+      ],
+    });
+
+    if (!event) {
+      throw new BadGatewayException('Event not found');
+    }
+
+    return event;
+  }
 }

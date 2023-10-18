@@ -1,26 +1,27 @@
-import { Controller } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Param,
+  ParseIntPipe,
+  Post,
+} from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { TransactionsService } from './transactions.service';
+import { addTransactionsDto } from './dto/addTransactions.dto';
 
 @ApiTags('transactions')
 @Controller('transactions')
 export class TransactionsController {
   constructor(private readonly transactionsService: TransactionsService) {}
 
-  // @Get()
-  // async get() {
-  //   return await this.transactionsService.find();
-  // }
+  @Post()
+  async create(@Body() transactions: addTransactionsDto) {
+    return await this.transactionsService.create(transactions);
+  }
 
-  // @Post()
-  // async create(@Body() transactions: addTransactionsDto) {
-  //   return await this.transactionsService.create(transactions);
-  // }
-
-  // @Get(':userId')
-  // async getTransactionByUserId(
-  //   @Param('userId') userId: number,
-  // ): Promise<TransactionsEntity> {
-  //   return this.transactionsService.getTransactionByUserId(userId);
-  // }
+  @Delete(':transactionId')
+  async delete(@Param('transactionId', ParseIntPipe) transactionId: number) {
+    return await this.transactionsService.delete(transactionId);
+  }
 }

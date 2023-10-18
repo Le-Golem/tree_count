@@ -1,4 +1,5 @@
 import { TimestampEntity } from 'src/common/generics/timestamp.entities';
+import { TransactionsEntity } from 'src/transactions/entity/transactions.entity';
 import { ParticipateEntity } from 'src/user/entity/participate.entity';
 import {
   Column,
@@ -25,6 +26,12 @@ export class EventEntity extends TimestampEntity {
   @OneToMany(() => ParticipateEntity, (user) => user.event, {
     nullable: true,
   })
-  @JoinColumn({ name: 'eventUser' })
-  users: ParticipateEntity[];
+  @JoinColumn({ name: 'participateId' })
+  participate: ParticipateEntity[];
+
+  @OneToMany(() => TransactionsEntity, (transaction) => transaction.event, {
+    nullable: true,
+  })
+  @JoinColumn({ name: 'transactionId' })
+  transactions: TransactionsEntity[];
 }
