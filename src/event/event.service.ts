@@ -147,7 +147,7 @@ export class EventService {
         'participate.user',
         'transactions',
         'transactions.sender',
-        'transactions.receiver',
+        'transactions.receivers',
       ],
     });
 

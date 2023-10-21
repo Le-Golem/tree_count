@@ -15,9 +15,10 @@ export class UserService {
     return await this.userRepository.find();
   }
 
-  async create(user: addUserDto) {
+  async create(user: addUserDto): Promise<UserEntity> {
     const insertResult = await this.userRepository.insert(user);
-    return insertResult.identifiers[0];
+    const newUser: UserEntity = insertResult.raw[0];
+    return newUser;
   }
 
   async findByUsername(username: string): Promise<UserEntity | undefined> {

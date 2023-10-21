@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber, IsOptional, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsArray, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class addTransactionsDto {
   @ApiProperty()
@@ -19,7 +20,8 @@ export class addTransactionsDto {
   eventId: number;
 
   @ApiProperty()
-  @IsNumber()
+  @IsArray()
+  @Type(() => Number)
   @IsOptional()
-  receiverId: number;
+  receiverId: number[];
 }
