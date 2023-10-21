@@ -16,6 +16,9 @@ export class TransactionsEntity extends TimestampEntity {
   @PrimaryGeneratedColumn()
   transactionId: number;
 
+  @Column({ type: 'date', default: () => 'CURRENT_TIMESTAMP' })
+  date: Date;
+
   @Column()
   label: string;
 
