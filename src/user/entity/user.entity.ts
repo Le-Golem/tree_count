@@ -18,11 +18,14 @@ export class UserEntity extends TimestampEntity {
   @Column()
   username: string;
 
-  @Column()
+  @Column({
+    select: false,
+  })
   password: string;
 
   @Column({
     nullable: true,
+    select: false,
   })
   email: string;
 

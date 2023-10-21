@@ -20,10 +20,6 @@ export class TransactionsService {
     private readonly userRepository: Repository<UserEntity>,
   ) {}
 
-  // async find() {
-  //   return await this.transactionRepository.find();
-  // }
-
   async create(transactions: addTransactionsDto) {
     const event = await this.eventRepository.findOne({
       where: { eventId: transactions.eventId },
