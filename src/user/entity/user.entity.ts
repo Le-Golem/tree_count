@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { ParticipateEntity } from './participate.entity';
 import { TransactionsEntity } from 'src/transactions/entity/transactions.entity';
+//import bcrypt from 'bcrypt';
 
 @Entity('users')
 export class UserEntity extends TimestampEntity {
@@ -32,4 +33,8 @@ export class UserEntity extends TimestampEntity {
   @OneToMany(() => TransactionsEntity, (transaction) => transaction.sender)
   @JoinColumn({ name: 'transactionId' })
   transactions: TransactionsEntity[];
+
+  // async validatePassword(password: string): Promise<boolean> {
+  //   return await bcrypt.compare(password, this.password);
+  // }
 }

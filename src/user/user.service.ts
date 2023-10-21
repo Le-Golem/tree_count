@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserEntity } from './entity/user.entity';
 import { addUserDto } from './dto/addUser.dto';
-const bcrypt = require('bcrypt');
 
 @Injectable()
 export class UserService {
@@ -17,7 +16,8 @@ export class UserService {
   }
 
   async create(user: addUserDto) {
-    return await this.userRepository.save(user);
+    const insertResult = await this.userRepository.insert(user);
+    return insertResult.identifiers[0];
   }
 
   async findByUsername(username: string): Promise<UserEntity | undefined> {
@@ -25,21 +25,9 @@ export class UserService {
   }
 
   async findById(userId: number): Promise<UserEntity> {
-
-    const test = await bcrypt.compare(userId.toString(), userId.toString());
-
     return await this.userRepository.findOne({
       where: { userId: userId },
       relations: ['participate', 'participate.event'],
     });
   }
-
-  // async getEvents(userId: number): Promise<UserEntity> {
-  //   return this.userRepository
-  //     .createQueryBuilder('user')
-  //     .leftJoinAndSelect('user.events', 'participate')
-  //     .leftJoinAndSelect('participate.event', 'event')
-  //     .where('user.userId = :userId', { userId })
-  //     .getOne();
-  // }
 }

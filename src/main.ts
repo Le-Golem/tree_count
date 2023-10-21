@@ -73,7 +73,7 @@ async function bootstrap() {
 
   /*******************************************/
 
-  await app.listen(3001);
+  await app.listen(3000);
   writeFileSync('./graph.json', app.get(SerializedGraph).toString()); // test
 }
 bootstrap();

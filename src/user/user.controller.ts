@@ -27,11 +27,4 @@ export class UserController {
     }
     return user;
   }
-
-  // @Get(':userId/events')
-  // async getEventsByUserId(
-  //   @Param('userId') userId: number,
-  // ): Promise<UserEntity> {
-  //   return await this.userService.getEvents(userId);
-  // }
 }
