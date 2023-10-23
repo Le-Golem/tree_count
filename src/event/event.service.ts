@@ -6,6 +6,7 @@ import { addEventDto } from './dto/addEvent.dto';
 import { UserEntity } from 'src/user/entity/user.entity';
 import { ParticipateEntity } from 'src/user/entity/participate.entity';
 import { updateEventDto } from './dto/updateEvent.dto';
+import { TransactionsEntity } from 'src/transactions/entity/transactions.entity';
 
 @Injectable()
 export class EventService {
@@ -16,6 +17,8 @@ export class EventService {
     private readonly participateRepository: Repository<ParticipateEntity>,
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
+    @InjectRepository(TransactionsEntity)
+    private readonly transactionRepository: Repository<TransactionsEntity>,
   ) {}
 
   async create(event: addEventDto) {
@@ -170,6 +173,40 @@ export class EventService {
       }
     }
 
-    return { event, totalExpenses, expensesDetails };
+    const balances: { [userId: number]: number } = {};
+
+    for (const user of event.participate) {
+      balances[user.user.userId] = await this.computeUserBalance(
+        user.user.userId,
+        eventId,
+      );
+    }
+
+    return { event, totalExpenses, expensesDetails, balances };
+  }
+
+  async computeUserBalance(userId: number, eventId: number) {
+    const totalContribution = await this.transactionRepository
+      .createQueryBuilder('transactions')
+      .select('SUM(transactions.amount)', 'total')
+      .where('transactions.senderId = :userId', { userId })
+      .andWhere('transactions.eventId = :eventId', { eventId })
+      .getRawOne();
+
+    const totalDue = await this.transactionRepository
+      .createQueryBuilder('transaction')
+      .innerJoin(
+        'transaction_receivers',
+        'tr',
+        'tr.transactionId = transaction.transactionId',
+      )
+      .where('tr.receiverId = :userId', { userId })
+      .select('SUM(transaction.amount / COUNT(tr.receiverId))', 'total')
+      .groupBy('transaction.transactionId')
+      .getRawOne();
+
+    const balance = (totalDue.total || 0) - (totalContribution.total || 0);
+
+    return balance;
   }
 }
