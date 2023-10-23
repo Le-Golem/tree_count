@@ -147,7 +147,7 @@ export class EventService {
         'participate.user',
         'transactions',
         'transactions.sender',
-        'transactions.receiver',
+        'transactions.receivers',
       ],
     });
 
@@ -155,6 +155,21 @@ export class EventService {
       throw new BadGatewayException('Event not found');
     }
 
-    return event;
+    const totalExpenses = event.transactions.reduce(
+      (acc, transaction) => acc + transaction.amount,
+      0,
+    );
+
+    const expensesDetails: object = {};
+
+    for (const transaction of event.transactions) {
+      if (transaction.sender.userId in expensesDetails) {
+        expensesDetails[transaction.sender.userId] += transaction.amount;
+      } else {
+        expensesDetails[transaction.sender.userId] = transaction.amount;
+      }
+    }
+
+    return { event, totalExpenses, expensesDetails };
   }
 }

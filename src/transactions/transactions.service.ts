@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { TransactionsEntity } from './entity/transactions.entity';
 import { addTransactionsDto } from './dto/addTransactions.dto';
 import { EventEntity } from 'src/event/entity/event.entity';
@@ -19,10 +19,6 @@ export class TransactionsService {
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
   ) {}
-
-  // async find() {
-  //   return await this.transactionRepository.find();
-  // }
 
   async create(transactions: addTransactionsDto) {
     const event = await this.eventRepository.findOne({
@@ -47,35 +43,40 @@ export class TransactionsService {
     }
 
     if (transactions.receiverId) {
-      const receiver = await this.userRepository.findOne({
-        where: { userId: transactions.receiverId },
+      const receivers: UserEntity[] = await this.userRepository.find({
+        where: { userId: In(transactions.receiverId) },
       });
 
-      if (!receiver) {
+      if (!receivers) {
         return 'User {receiver} not found';
       }
 
-      if (!event.participate.find((p) => p.user.userId === receiver.userId)) {
-        return 'User {receiver} not participate in this event';
-      }
+      for (const r of receivers) {
+        if (!event.participate.find((p) => p.user.userId === r.userId)) {
+          return 'User {receiver} not participate in this event';
+        }
 
-      if (sender.userId === receiver.userId) {
-        return 'Sender and receiver cannot be the same';
+        if (sender.userId === r.userId) {
+          return 'Sender and receiver cannot be the same';
+        }
       }
-
-      return await this.transactionRepository.insert({
-        ...transactions,
-        sender,
-        event,
-        receiver,
-      });
     }
 
-    return await this.transactionRepository.insert({
+    const newTransaction = this.transactionRepository.create({
       ...transactions,
       sender,
       event,
     });
+
+    if (transactions.receiverId) {
+      const receivers: UserEntity[] = await this.userRepository.find({
+        where: { userId: In(transactions.receiverId) },
+      });
+
+      newTransaction.receivers = receivers;
+    }
+
+    return await this.transactionRepository.save(newTransaction);
   }
 
   async delete(transactionId: number) {

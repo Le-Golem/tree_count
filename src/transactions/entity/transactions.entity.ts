@@ -5,6 +5,8 @@ import {
   Column,
   Entity,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -13,6 +15,9 @@ import {
 export class TransactionsEntity extends TimestampEntity {
   @PrimaryGeneratedColumn()
   transactionId: number;
+
+  @Column({ type: 'date', default: () => 'CURRENT_TIMESTAMP' })
+  date: Date;
 
   @Column()
   label: string;
@@ -28,7 +33,17 @@ export class TransactionsEntity extends TimestampEntity {
   @JoinColumn({ name: 'eventId' })
   event: EventEntity;
 
-  @ManyToOne(() => UserEntity, (user) => user.transactions, { nullable: true })
-  @JoinColumn({ name: 'receiver-userId' })
-  receiver: UserEntity;
+  @ManyToMany(() => UserEntity, (user) => user.transactions)
+  @JoinTable({
+    name: 'transaction_receivers',
+    joinColumn: {
+      name: 'transactionId',
+      referencedColumnName: 'transactionId',
+    },
+    inverseJoinColumn: {
+      name: 'receiverId',
+      referencedColumnName: 'userId',
+    },
+  })
+  receivers: UserEntity[];
 }

@@ -1,6 +1,13 @@
 import { ApiTags } from '@nestjs/swagger';
 import { UserService } from './user.service';
-import { BadGatewayException, Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  BadGatewayException,
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { UserEntity } from './entity/user.entity';
 import { addUserDto } from './dto/addUser.dto';
 

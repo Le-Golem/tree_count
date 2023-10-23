@@ -14,6 +14,12 @@ export class EventEntity extends TimestampEntity {
   @PrimaryGeneratedColumn()
   eventId: number;
 
+  @Column({
+    type: 'date',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  date: Date;
+
   @Column()
   label: string;
 
