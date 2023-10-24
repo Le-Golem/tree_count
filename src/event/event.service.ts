@@ -214,6 +214,13 @@ export class EventService {
     }
 
     delete event.participate;
+    for (const transaction of event.transactions) {
+      delete transaction.sender.username;
+
+      for (const receiver of transaction.receivers) {
+        delete receiver.username;
+      }
+    }
 
     return { event, totalExpenses, participate };
   }
