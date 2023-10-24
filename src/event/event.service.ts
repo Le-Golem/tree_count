@@ -8,6 +8,19 @@ import { ParticipateEntity } from 'src/user/entity/participate.entity';
 import { updateEventDto } from './dto/updateEvent.dto';
 import { TransactionsEntity } from 'src/transactions/entity/transactions.entity';
 
+export class UserDetail {
+  userId: number;
+  username: string;
+  email: string;
+  totalContribution: number;
+  totalDue: number;
+  balance: number;
+
+  constructor(partial: Partial<UserDetail>) {
+    Object.assign(this, partial);
+  }
+}
+
 @Injectable()
 export class EventService {
   constructor(
@@ -163,50 +176,79 @@ export class EventService {
       0,
     );
 
-    const expensesDetails: object = {};
-
-    for (const transaction of event.transactions) {
-      if (transaction.sender.userId in expensesDetails) {
-        expensesDetails[transaction.sender.userId] += transaction.amount;
-      } else {
-        expensesDetails[transaction.sender.userId] = transaction.amount;
-      }
-    }
-
-    const balances: { [userId: number]: number } = {};
+    const participate: UserDetail[] = [];
 
     for (const user of event.participate) {
-      balances[user.user.userId] = await this.computeUserBalance(
-        user.user.userId,
-        eventId,
+      const totalContribution = event.transactions.reduce(
+        (acc, transaction) =>
+          transaction.sender.userId === user.user.userId
+            ? acc + transaction.amount
+            : acc,
+        0,
       );
+
+      const totalDue = event.transactions.reduce((acc, transaction) => {
+        if (transaction.receivers) {
+          const receiver = transaction.receivers.find(
+            (receiver) => receiver.userId === user.user.userId,
+          );
+          if (receiver) {
+            return acc + transaction.amount / transaction.receivers.length;
+          }
+        }
+        return acc;
+      }, 0);
+
+      const balance = totalContribution - totalDue;
+
+      const newUserDetail = new UserDetail({
+        userId: user.user.userId,
+        username: user.user.username,
+        email: user.user.email,
+        totalContribution,
+        totalDue,
+        balance,
+      });
+
+      participate.push(newUserDetail);
     }
 
-    return { event, totalExpenses, expensesDetails, balances };
+    delete event.participate;
+
+    return { event, totalExpenses, participate };
   }
 
   async computeUserBalance(userId: number, eventId: number) {
     const totalContribution = await this.transactionRepository
       .createQueryBuilder('transactions')
+      .leftJoin('transactions.sender', 'sender')
       .select('SUM(transactions.amount)', 'total')
-      .where('transactions.senderId = :userId', { userId })
+      .where('sender.userId = :userId', { userId })
       .andWhere('transactions.eventId = :eventId', { eventId })
       .getRawOne();
 
-    const totalDue = await this.transactionRepository
+    // Récupérez les transactions où l'utilisateur est un receiver
+    const transactionsWhereReceiver = await this.transactionRepository
       .createQueryBuilder('transaction')
-      .innerJoin(
-        'transaction_receivers',
-        'tr',
-        'tr.transactionId = transaction.transactionId',
-      )
-      .where('tr.receiverId = :userId', { userId })
-      .select('SUM(transaction.amount / COUNT(tr.receiverId))', 'total')
-      .groupBy('transaction.transactionId')
-      .getRawOne();
+      .innerJoinAndSelect('transaction.receivers', 'receiver')
+      .where('receiver.userId = :userId', { userId })
+      .andWhere('transaction.eventId = :eventId', { eventId })
+      .getMany();
 
-    const balance = (totalDue.total || 0) - (totalContribution.total || 0);
+    //console.log('transactionsWhereReceiver', transactionsWhereReceiver);
 
-    return balance;
+    let totalDue = 0;
+
+    for (const trans of transactionsWhereReceiver) {
+      const transaction = await this.transactionRepository.findOne({
+        where: { transactionId: trans.transactionId },
+        relations: ['receivers'],
+      });
+      totalDue += trans.amount / transaction.receivers.length;
+    }
+    // Calculez la balance
+    const balance = (totalContribution.total || 0) - totalDue;
+
+    return parseFloat(balance.toFixed(2));
   }
 }
