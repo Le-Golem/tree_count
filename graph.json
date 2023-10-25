@@ -14,7 +14,7 @@
         "transient": false,
         "exported": false,
         "token": "JwtModule",
-        "initTime": 32.77270000000135
+        "initTime": 36.38949999958277
       }
     },
     "203550704": {
@@ -47,7 +47,7 @@
         "transient": false,
         "exported": false,
         "token": "InternalCoreModule",
-        "initTime": 34.459399999992456
+        "initTime": 37.99870000034571
       }
     },
     "233936880": {
@@ -63,7 +63,7 @@
         "transient": false,
         "exported": false,
         "token": "AppController",
-        "initTime": 0.8625000000174623
+        "initTime": 0.9349000006914139
       }
     },
     "266839889": {
@@ -79,7 +79,7 @@
         "transient": false,
         "exported": true,
         "token": "EntityManager",
-        "initTime": 127.60670000000391
+        "initTime": 139.29959999769926
       }
     },
     "273006059": {
@@ -96,7 +96,7 @@
         "exported": false,
         "token": "ParseIntPipe",
         "subtype": "pipe",
-        "initTime": 0.4910999999847263
+        "initTime": 0.47760000079870224
       }
     },
     "545846241": {
@@ -152,7 +152,7 @@
         "transient": false,
         "exported": true,
         "token": "Reflector",
-        "initTime": 34.298299999994924
+        "initTime": 37.82610000669956
       }
     },
     "687352615": {
@@ -217,7 +217,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmCoreModule",
-        "initTime": 33.96659999998519
+        "initTime": 37.472999997437
       }
     },
     "892422081": {
@@ -233,7 +233,7 @@
         "transient": false,
         "exported": true,
         "token": "TransactionsService",
-        "initTime": 128.32670000000508
+        "initTime": 140.13239999860525
       }
     },
     "1029560562": {
@@ -249,7 +249,7 @@
         "transient": false,
         "exported": false,
         "token": "TransactionsController",
-        "initTime": 0.15030000000842847,
+        "initTime": 0.12409999966621399,
         "enhancers": [
           {
             "id": "273006059",
@@ -273,7 +273,7 @@
         "exported": false,
         "token": "AuthGuard",
         "subtype": "guard",
-        "initTime": 0.5602999999828171
+        "initTime": 0.5835000053048134
       }
     },
     "1070370213": {
@@ -289,7 +289,7 @@
         "transient": false,
         "exported": true,
         "token": "JwtService",
-        "initTime": 33.20199999999022
+        "initTime": 36.74650000035763
       }
     },
     "1139971038": {
@@ -331,7 +331,7 @@
         "transient": false,
         "exported": true,
         "token": "EventEntityRepository",
-        "initTime": 127.04209999999148
+        "initTime": 138.89299999922514
       }
     },
     "1205385508": {
@@ -347,7 +347,7 @@
         "transient": false,
         "exported": true,
         "token": "UserEntityRepository",
-        "initTime": 127.49460000000545
+        "initTime": 139.2926000058651
       }
     },
     "1371533376": {
@@ -364,7 +364,7 @@
         "transient": false,
         "exported": false,
         "token": "EventModule",
-        "initTime": 32.73610000000917
+        "initTime": 36.35590000450611
       }
     },
     "1382700593": {
@@ -380,7 +380,7 @@
         "transient": false,
         "exported": true,
         "token": "ParticipateEntityRepository",
-        "initTime": 127.29790000000503
+        "initTime": 139.125799998641
       }
     },
     "1404752088": {
@@ -396,7 +396,7 @@
         "transient": false,
         "exported": false,
         "token": "AuthController",
-        "initTime": 0.4101000000082422,
+        "initTime": 0.5754999965429306,
         "enhancers": [
           {
             "id": "1051058129",
@@ -420,7 +420,7 @@
         "transient": false,
         "exported": true,
         "token": "Reflector",
-        "initTime": 35.64079999999376
+        "initTime": 39.04380000382662
       }
     },
     "1475573941": {
@@ -453,7 +453,7 @@
         "transient": false,
         "exported": true,
         "token": "Connection",
-        "initTime": 127.5675999999803
+        "initTime": 139.26089999824762
       }
     },
     "1542581243": {
@@ -486,7 +486,7 @@
         "exported": false,
         "token": "ParseIntPipe",
         "subtype": "pipe",
-        "initTime": 0.5431999999855179
+        "initTime": 0.5290000066161156
       }
     },
     "1630378403": {
@@ -502,7 +502,7 @@
         "transient": false,
         "exported": true,
         "token": "ParticipateEntityRepository",
-        "initTime": 126.9989999999816
+        "initTime": 138.8542000055313
       }
     },
     "1630378404": {
@@ -518,7 +518,7 @@
         "transient": false,
         "exported": true,
         "token": "ParticipateEntityRepository",
-        "initTime": 126.5008000000089
+        "initTime": 138.33779999613762
       }
     },
     "1690524226": {
@@ -535,7 +535,7 @@
         "transient": false,
         "exported": false,
         "token": "TransactionsModule",
-        "initTime": 32.470999999990454
+        "initTime": 35.98610000312328
       }
     },
     "1712941473": {
@@ -567,7 +567,23 @@
         "transient": false,
         "exported": true,
         "token": "EventService",
-        "initTime": 128.5956999999762
+        "initTime": 140.50540000200272
+      }
+    },
+    "1814387980": {
+      "id": "1814387980",
+      "label": "TransactionsEntityRepository",
+      "parent": "545846243",
+      "metadata": {
+        "type": "provider",
+        "internal": false,
+        "sourceModuleName": "TypeOrmModule",
+        "durable": false,
+        "static": true,
+        "transient": false,
+        "exported": true,
+        "token": "TransactionsEntityRepository",
+        "initTime": 138.5067999958992
       }
     },
     "1817334964": {
@@ -599,7 +615,7 @@
         "transient": false,
         "exported": true,
         "token": "EventEntityRepository",
-        "initTime": 126.61650000000373
+        "initTime": 138.3796000033617
       }
     },
     "1919157847": {
@@ -616,7 +632,7 @@
         "transient": false,
         "exported": true,
         "token": "REQUEST",
-        "initTime": 29.5682000000088
+        "initTime": 32.95219999551773
       }
     },
     "2075644217": {
@@ -681,7 +697,7 @@
         "transient": true,
         "exported": true,
         "token": "INQUIRER",
-        "initTime": 29.559799999988172
+        "initTime": 32.9442999958992
       }
     },
     "-26938366": {
@@ -729,7 +745,7 @@
         "transient": false,
         "exported": true,
         "token": "LazyModuleLoader",
-        "initTime": 33.78200000000652
+        "initTime": 37.290800005197525
       }
     },
     "-1904419534": {
@@ -772,7 +788,7 @@
         "transient": false,
         "exported": false,
         "token": "AppModule",
-        "initTime": 33.77499999999418
+        "initTime": 37.28480000048876
       }
     },
     "-71302842": {
@@ -820,7 +836,7 @@
         "transient": false,
         "exported": false,
         "token": "AppService",
-        "initTime": 33.75649999998859
+        "initTime": 37.26539999991655
       }
     },
     "-2135742481": {
@@ -847,7 +863,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmModule",
-        "initTime": 33.74619999999413
+        "initTime": 37.254700005054474
       }
     },
     "-1068388246": {
@@ -905,7 +921,7 @@
         "transient": false,
         "exported": true,
         "token": "DataSource",
-        "initTime": 127.46590000001015
+        "initTime": 139.14009999483824
       }
     },
     "-1537098012": {
@@ -932,7 +948,7 @@
         "transient": false,
         "exported": false,
         "token": "UserModule",
-        "initTime": 33.36019999999553
+        "initTime": 36.93789999932051
       }
     },
     "-523403191": {
@@ -964,7 +980,7 @@
         "transient": false,
         "exported": true,
         "token": "UserService",
-        "initTime": 129.2483999999822
+        "initTime": 141.11640000343323
       }
     },
     "-207939746": {
@@ -980,7 +996,7 @@
         "transient": false,
         "exported": false,
         "token": "UserController",
-        "initTime": 0.38659999999799766
+        "initTime": 0.3700000047683716
       }
     },
     "-257450702": {
@@ -997,7 +1013,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmModule",
-        "initTime": 32.96630000000005
+        "initTime": 36.563900001347065
       }
     },
     "-223917668": {
@@ -1040,7 +1056,7 @@
         "transient": false,
         "exported": false,
         "token": "AuthModule",
-        "initTime": 32.908499999990454
+        "initTime": 36.50720000267029
       }
     },
     "-120792986": {
@@ -1072,7 +1088,7 @@
         "transient": false,
         "exported": true,
         "token": "AuthService",
-        "initTime": 129.5280999999959
+        "initTime": 141.40640000253916
       }
     },
     "-536515674": {
@@ -1172,7 +1188,7 @@
         "transient": false,
         "exported": false,
         "token": "EventController",
-        "initTime": 0.19009999997797422,
+        "initTime": 0.22100000083446503,
         "enhancers": [
           {
             "id": "1561920284",
@@ -1221,7 +1237,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmModule",
-        "initTime": 32.48210000002291
+        "initTime": 35.99679999798536
       }
     },
     "-223917667": {
@@ -1253,7 +1269,23 @@
         "transient": false,
         "exported": true,
         "token": "UserEntityRepository",
-        "initTime": 126.85509999998612
+        "initTime": 138.70600000023842
+      }
+    },
+    "-65151014": {
+      "id": "-65151014",
+      "label": "TransactionsEntityRepository",
+      "parent": "545846242",
+      "metadata": {
+        "type": "provider",
+        "internal": false,
+        "sourceModuleName": "TypeOrmModule",
+        "durable": false,
+        "static": true,
+        "transient": false,
+        "exported": true,
+        "token": "TransactionsEntityRepository",
+        "initTime": 138.66580000519753
       }
     },
     "-890197272": {
@@ -1302,7 +1334,7 @@
         "transient": false,
         "exported": false,
         "token": "TypeOrmModule",
-        "initTime": 32.09820000000764
+        "initTime": 35.64410000294447
       }
     },
     "-223917666": {
@@ -1321,22 +1353,6 @@
         "token": "ApplicationConfig"
       }
     },
-    "-65151014": {
-      "id": "-65151014",
-      "label": "TransactionsEntityRepository",
-      "parent": "545846243",
-      "metadata": {
-        "type": "provider",
-        "internal": false,
-        "sourceModuleName": "TypeOrmModule",
-        "durable": false,
-        "static": true,
-        "transient": false,
-        "exported": true,
-        "token": "TransactionsEntityRepository",
-        "initTime": 126.75640000001295
-      }
-    },
     "-1265693737": {
       "id": "-1265693737",
       "label": "UserEntityRepository",
@@ -1350,7 +1366,7 @@
         "transient": false,
         "exported": true,
         "token": "UserEntityRepository",
-        "initTime": 126.45879999999306
+        "initTime": 138.3099000006914
       }
     }
   },
@@ -1452,6 +1468,22 @@
         "targetModuleName": "TypeOrmModule"
       },
       "id": "529112417"
+    },
+    "538821689": {
+      "source": "892422081",
+      "target": "1814387980",
+      "metadata": {
+        "type": "class-to-class",
+        "sourceModuleName": "TransactionsModule",
+        "sourceClassName": "TransactionsService",
+        "targetClassName": "TransactionsEntityRepository",
+        "sourceClassToken": "TransactionsService",
+        "targetClassToken": "TransactionsEntityRepository",
+        "targetModuleName": "TypeOrmModule",
+        "keyOrIndex": 0,
+        "injectionType": "constructor"
+      },
+      "id": "538821689"
     },
     "636494595": {
       "source": "-536515674",
@@ -1906,22 +1938,6 @@
       },
       "id": "1635338963"
     },
-    "1685375972": {
-      "source": "892422081",
-      "target": "-65151014",
-      "metadata": {
-        "type": "class-to-class",
-        "sourceModuleName": "TransactionsModule",
-        "sourceClassName": "TransactionsService",
-        "targetClassName": "TransactionsEntityRepository",
-        "sourceClassToken": "TransactionsService",
-        "targetClassToken": "TransactionsEntityRepository",
-        "targetModuleName": "TypeOrmModule",
-        "keyOrIndex": 0,
-        "injectionType": "constructor"
-      },
-      "id": "1685375972"
-    },
     "1746852022": {
       "source": "-2045439487",
       "target": "1205385508",
@@ -2107,6 +2123,22 @@
       },
       "id": "-1955975770"
     },
+    "-332770202": {
+      "source": "1814387980",
+      "target": "-2103415210",
+      "metadata": {
+        "type": "class-to-class",
+        "sourceModuleName": "TypeOrmModule",
+        "sourceClassName": "TransactionsEntityRepository",
+        "targetClassName": "DataSource",
+        "sourceClassToken": "TransactionsEntityRepository",
+        "targetClassToken": "DataSource",
+        "targetModuleName": "TypeOrmCoreModule",
+        "keyOrIndex": 0,
+        "injectionType": "constructor"
+      },
+      "id": "-332770202"
+    },
     "-1452162807": {
       "source": "1630378404",
       "target": "-2103415210",
@@ -2171,6 +2203,22 @@
       },
       "id": "-1712693092"
     },
+    "-1148661566": {
+      "source": "1736346571",
+      "target": "-65151014",
+      "metadata": {
+        "type": "class-to-class",
+        "sourceModuleName": "EventModule",
+        "sourceClassName": "EventService",
+        "targetClassName": "TransactionsEntityRepository",
+        "sourceClassToken": "EventService",
+        "targetClassToken": "TransactionsEntityRepository",
+        "targetModuleName": "TypeOrmModule",
+        "keyOrIndex": 3,
+        "injectionType": "constructor"
+      },
+      "id": "-1148661566"
+    },
     "-1023309764": {
       "source": "892422081",
       "target": "1630378404",
@@ -2202,6 +2250,22 @@
         "injectionType": "constructor"
       },
       "id": "-555107192"
+    },
+    "-128561841": {
+      "source": "1404752088",
+      "target": "-2045439487",
+      "metadata": {
+        "type": "class-to-class",
+        "sourceModuleName": "AuthModule",
+        "sourceClassName": "AuthController",
+        "targetClassName": "UserService",
+        "sourceClassToken": "AuthController",
+        "targetClassToken": "UserService",
+        "targetModuleName": "UserModule",
+        "keyOrIndex": 1,
+        "injectionType": "constructor"
+      },
+      "id": "-128561841"
     },
     "-1429799902": {
       "source": "-19112576",
