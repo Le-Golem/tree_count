@@ -82,7 +82,6 @@ export class TransactionsService {
   async delete(transactionId: number) {
     const transaction = await this.transactionRepository.findOne({
       where: { transactionId },
-      relations: ['sender', 'receiver', 'event'],
     });
 
     if (!transaction) {
