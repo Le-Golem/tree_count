@@ -171,15 +171,15 @@ export class EventService {
       throw new BadGatewayException('Event not found');
     }
 
-    const totalExpenses = event.transactions.reduce(
-      (acc, transaction) => acc + transaction.amount,
+    const totalExpenses: number = event.transactions.reduce(
+      (acc: number, transaction) => acc + transaction.amount,
       0,
     );
 
     const participate: UserDetail[] = [];
 
     for (const user of event.participate) {
-      const totalContribution = event.transactions.reduce(
+      const totalContribution: number = event.transactions.reduce(
         (acc, transaction) =>
           transaction.sender.userId === user.user.userId
             ? acc + transaction.amount
@@ -187,19 +187,30 @@ export class EventService {
         0,
       );
 
-      const totalDue = event.transactions.reduce((acc, transaction) => {
-        if (transaction.receivers) {
-          const receiver = transaction.receivers.find(
-            (receiver) => receiver.userId === user.user.userId,
-          );
-          if (receiver) {
-            return acc + transaction.amount / transaction.receivers.length;
+      const calculTotalDue: number = event.transactions.reduce(
+        (acc, transaction) => {
+          if (transaction.receivers) {
+            if (transaction.receivers.length === 0) {
+              return acc + transaction.amount / event.participate.length;
+            } else {
+              console.log('Avec receiver ' + transaction.transactionId);
+              const receiver = transaction.receivers.find(
+                (receiver) => receiver.userId === user.user.userId,
+              );
+              if (receiver) {
+                return acc + transaction.amount / transaction.receivers.length;
+              }
+            }
           }
-        }
-        return acc;
-      }, 0);
+          return acc;
+        },
+        0,
+      );
 
-      const balance = totalContribution - totalDue;
+      const totalDue = parseFloat(calculTotalDue.toFixed(2));
+
+      const calculBalance = totalContribution - totalDue;
+      const balance = parseFloat(calculBalance.toFixed(2));
 
       const newUserDetail = new UserDetail({
         userId: user.user.userId,

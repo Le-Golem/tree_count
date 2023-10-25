@@ -22,7 +22,15 @@ export class TransactionsEntity extends TimestampEntity {
   @Column()
   label: string;
 
-  @Column()
+  @Column({
+    type: 'decimal',
+    scale: 2,
+    default: 0,
+    transformer: {
+      from: (value: string) => parseFloat(value),
+      to: (value: number) => value.toString(),
+    },
+  })
   amount: number;
 
   @ManyToOne(() => UserEntity, (user) => user.transactions)
