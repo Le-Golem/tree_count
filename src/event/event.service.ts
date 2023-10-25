@@ -6,6 +6,20 @@ import { addEventDto } from './dto/addEvent.dto';
 import { UserEntity } from 'src/user/entity/user.entity';
 import { ParticipateEntity } from 'src/user/entity/participate.entity';
 import { updateEventDto } from './dto/updateEvent.dto';
+import { TransactionsEntity } from 'src/transactions/entity/transactions.entity';
+
+export class UserDetail {
+  userId: number;
+  username: string;
+  email: string;
+  totalContribution: number;
+  totalDue: number;
+  balance: number;
+
+  constructor(partial: Partial<UserDetail>) {
+    Object.assign(this, partial);
+  }
+}
 
 @Injectable()
 export class EventService {
@@ -16,6 +30,8 @@ export class EventService {
     private readonly participateRepository: Repository<ParticipateEntity>,
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
+    @InjectRepository(TransactionsEntity)
+    private readonly transactionRepository: Repository<TransactionsEntity>,
   ) {}
 
   async create(event: addEventDto) {
@@ -160,16 +176,86 @@ export class EventService {
       0,
     );
 
-    const expensesDetails: object = {};
+    const participate: UserDetail[] = [];
 
+    for (const user of event.participate) {
+      const totalContribution = event.transactions.reduce(
+        (acc, transaction) =>
+          transaction.sender.userId === user.user.userId
+            ? acc + transaction.amount
+            : acc,
+        0,
+      );
+
+      const totalDue = event.transactions.reduce((acc, transaction) => {
+        if (transaction.receivers) {
+          const receiver = transaction.receivers.find(
+            (receiver) => receiver.userId === user.user.userId,
+          );
+          if (receiver) {
+            return acc + transaction.amount / transaction.receivers.length;
+          }
+        }
+        return acc;
+      }, 0);
+
+      const balance = totalContribution - totalDue;
+
+      const newUserDetail = new UserDetail({
+        userId: user.user.userId,
+        username: user.user.username,
+        email: user.user.email,
+        totalContribution,
+        totalDue,
+        balance,
+      });
+
+      participate.push(newUserDetail);
+    }
+
+    delete event.participate;
     for (const transaction of event.transactions) {
-      if (transaction.sender.userId in expensesDetails) {
-        expensesDetails[transaction.sender.userId] += transaction.amount;
-      } else {
-        expensesDetails[transaction.sender.userId] = transaction.amount;
+      delete transaction.sender.username;
+
+      for (const receiver of transaction.receivers) {
+        delete receiver.username;
       }
     }
 
-    return { event, totalExpenses, expensesDetails };
+    return { event, totalExpenses, participate };
+  }
+
+  async computeUserBalance(userId: number, eventId: number) {
+    const totalContribution = await this.transactionRepository
+      .createQueryBuilder('transactions')
+      .leftJoin('transactions.sender', 'sender')
+      .select('SUM(transactions.amount)', 'total')
+      .where('sender.userId = :userId', { userId })
+      .andWhere('transactions.eventId = :eventId', { eventId })
+      .getRawOne();
+
+    // Récupérez les transactions où l'utilisateur est un receiver
+    const transactionsWhereReceiver = await this.transactionRepository
+      .createQueryBuilder('transaction')
+      .innerJoinAndSelect('transaction.receivers', 'receiver')
+      .where('receiver.userId = :userId', { userId })
+      .andWhere('transaction.eventId = :eventId', { eventId })
+      .getMany();
+
+    //console.log('transactionsWhereReceiver', transactionsWhereReceiver);
+
+    let totalDue = 0;
+
+    for (const trans of transactionsWhereReceiver) {
+      const transaction = await this.transactionRepository.findOne({
+        where: { transactionId: trans.transactionId },
+        relations: ['receivers'],
+      });
+      totalDue += trans.amount / transaction.receivers.length;
+    }
+    // Calculez la balance
+    const balance = (totalContribution.total || 0) - totalDue;
+
+    return parseFloat(balance.toFixed(2));
   }
 }
