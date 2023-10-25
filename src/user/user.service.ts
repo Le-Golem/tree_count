@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadGatewayException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserEntity } from './entity/user.entity';
@@ -16,6 +16,13 @@ export class UserService {
   }
 
   async create(user: addUserDto): Promise<UserEntity> {
+    const userExist = await this.userRepository.findOne({
+      where: { username: user.username },
+    });
+    if (userExist) {
+      throw new BadGatewayException('Username already exist');
+    }
+
     const insertResult = await this.userRepository.insert(user);
     const newUser: UserEntity = insertResult.raw[0];
     return newUser;
